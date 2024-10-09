@@ -1,46 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Status Kelulusan Siswa</title>
+    <title>Bonus Salon Pelanggan</title>
 </head>
 <body>
     <script>
-        // Standar kelulusan
-        const standarKelulusan = 60;
+        let totalKunjungan = 15; // Ubah nilai ini sesuai dengan input pengguna
 
-        let siswa = [
-            { nama: "Andi", nilai: { matematika: 70, biologi: 80, fisika: 70, kimia: 90 } },
-            { nama: "Ria", nilai: { matematika: 90, biologi: 65, fisika: 80, kimia: 70 } },
-            { nama: "Bima", nilai: { matematika: 100, biologi: 70, fisika: 95, kimia: 50 } },
-            { nama: "Toni", nilai: { matematika: 60, biologi: 60, fisika: 70, kimia: 60 } },
-            { nama: "Putri", nilai: { matematika: 70, biologi: 100, fisika: 80, kimia: 75 } }
-        ];
-        
-        function cekKelulusan(nilai) {
-            return nilai.matematika >= standarKelulusan &&
-                   nilai.biologi >= standarKelulusan &&
-                   nilai.fisika >= standarKelulusan &&
-                   nilai.kimia >= standarKelulusan;
-        }
+        const kunjunganUntukBonus = 10; // 10 kali kunjungan dapat bonus 1 gratis
+        let sisaKunjungan = totalKunjungan % kunjunganUntukBonus; // Sisa kunjungan yang belum cukup untuk bonus
+        let bonus = Math.floor(totalKunjungan / kunjunganUntukBonus); // Bonus yang didapat
 
-        let lulus = [];
-        let tidakLulus = [];
+        console.log("Total kunjungan: " + totalKunjungan);
+        console.log("Total potongan kupon yang dimiliki: " + sisaKunjungan);
 
-        for (let i = 0; i < siswa.length; i++) {
-            if (cekKelulusan(siswa[i].nilai)) {
-                lulus.push(siswa[i].nama);
-            } else {
-                tidakLulus.push(siswa[i].nama);
-            }
-        }
-
-        if (lulus.length === siswa.length) {
-            console.log("Semua Lulus");
-        } else if (tidakLulus.length === siswa.length) {
-            console.log("Semua Tidak Lulus");
+        if (bonus > 0) {
+            console.log("Anda sudah mendapatkan " + bonus + " kali kunjungan gratis!");
         } else {
-            console.log("Yang lulus: " + lulus.join(", "));
-            console.log("Yang tidak lulus: " + tidakLulus.join(", "));
+            console.log("Anda belum mendapatkan kunjungan gratis.");
         }
     </script>
 </body>
